@@ -1,5 +1,5 @@
 "use client";
-import { Course, Section, dummyCourses } from "@/data";
+import { Course, Section } from "@/data";
 import React, { Suspense, useEffect, useState } from "react";
 import {
   Card,

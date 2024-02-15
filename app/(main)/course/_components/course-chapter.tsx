@@ -1,4 +1,4 @@
-import { Course, Section, dummyCourses } from "@/data";
+import { Course, Section } from "@/data";
 import { useStore } from "@/hooks/store";
 import { cn } from "@/lib/utils";
 import {
