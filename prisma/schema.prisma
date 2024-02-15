@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// schema.prisma
+
+// Define the Lesson model
+model Lesson {
+  id        String  @id @default(uuid())
+  title     String
+  content   String
+  videoLink String
+  duration  Int
+  section   Section @relation(fields: [sectionId], references: [id])
+  sectionId String
+}
+
+// Define the Section model
+model Section {
+  id       String   @id @default(uuid())
+  title    String
+  lessons  Lesson[]
+  course   Course   @relation(fields: [courseId], references: [id])
+  courseId String
+}
+
+// Define the Course model
+model Course {
+  id             String    @id @default(uuid())
+  slug           String    @unique
+  title          String
+  description    String
+  instructor     String
+  thumbnail      String
+  duration       Int
+  prerequisites  String[]
+  expirationDate DateTime
+  sections       Section[]
+}
