@@ -14,14 +14,14 @@ const CourseSyllabus: React.FC<{ syllabus: Section[] }> = ({ syllabus }) => {
         <h2 className="font-bold text-xl">Course Syllabus:</h2>
         <Accordion type="single" collapsible>
           {syllabus.map((section, index) => (
-            <AccordionItem value={section.id.toString()}>
+            <AccordionItem value={section.id.toString()} key={section.id}>
               <AccordionTrigger className="font-semibold">
                 {section.title}
               </AccordionTrigger>
               <AccordionContent>
                 <ul className="list-disc ml-5 grid gap-2">
                   {section.lessons.map((lesson) => (
-                    <li>{lesson.title}</li>
+                    <li key={lesson.id}>{lesson.title}</li>
                   ))}
                 </ul>
               </AccordionContent>

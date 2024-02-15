@@ -78,6 +78,7 @@ const CourseChapter: React.FC<{
                   <Link
                     href={`/course/${params.slug}/chapter/${params.restIds[0]}/${lesson.id}`}
                     onClick={() => setIsclick(true)}
+                    key={lesson.id}
                   >
                     <li>{lesson.title}</li>
                   </Link>

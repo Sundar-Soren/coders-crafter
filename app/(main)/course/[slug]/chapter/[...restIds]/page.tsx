@@ -53,7 +53,7 @@ const MyComponent = ({
     } else {
       fetchCourses();
     }
-  }, []);
+  }, [params.restIds, params.slug]);
 
   return (
     <div className="lg:flex space-y-5 gap-5 pb-5">
@@ -98,7 +98,7 @@ const MyComponent = ({
         <div className="mt-2">
           {visitedCourse &&
             visitedCourse?.sections.map((section) => (
-              <CourseChapter section={section} />
+              <CourseChapter section={section} key={section.id} />
             ))}
         </div>
       </div>

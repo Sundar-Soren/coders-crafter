@@ -9,7 +9,6 @@ const Home = () => {
   const { search, setCourses, courses } = useStore();
 
   useEffect(() => {
-    console.log("DNDKLE");
     const fetchCourses = async () => {
       try {
         const { data } = await axios.get("/api/courses");

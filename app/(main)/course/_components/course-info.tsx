@@ -1,9 +1,11 @@
 import { Course } from "@/data";
 import { Book, Laptop, Play, VideoIcon } from "lucide-react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CourseSyllabus from "./course-syllabus";
 
 const CourseInfo: React.FC<{ course: Course }> = ({ course }) => {
+  const [courseDurationInHours, setCourseDurationInHours] = useState(0);
+
   const calculateTotalDurationInHours = (): number => {
     const totalMinutes = course.sections.reduce(
       (acc, section) =>
@@ -11,8 +13,12 @@ const CourseInfo: React.FC<{ course: Course }> = ({ course }) => {
       0
     );
     const totalHours = totalMinutes / 60;
-    return totalHours;
+    return Number(totalHours.toFixed(1));
   };
+
+  useEffect(() => {
+    setCourseDurationInHours(calculateTotalDurationInHours());
+  }, []);
 
   return (
     <div>
@@ -28,7 +34,7 @@ const CourseInfo: React.FC<{ course: Course }> = ({ course }) => {
         <ul className="mt-1 grid gap-1">
           <li className="flex items-center gap-2">
             <VideoIcon className="h-5 w-5" />
-            <span> hours on-demand video</span>
+            <span>{courseDurationInHours} hours on-demand video</span>
           </li>
           <li className="flex items-center gap-2">
             <Book className="h-5 w-5" />
