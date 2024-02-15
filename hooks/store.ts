@@ -1,4 +1,4 @@
-import { Course, dummyCourses } from "@/data";
+import { Course } from "@/data";
 import { create } from "zustand";
 
 interface Search {
@@ -58,14 +58,15 @@ export const useStore = create<Search>((set) => {
       (status) => status === "completed"
     ).length;
 
-    const course = dummyCourses.find((c) => c.id === courseId);
-    const totalSections = course ? course.sections.length : 0;
+    // const course = courses.find((c) => c.id === courseId);
+    // const totalSections = course ? course.sections.length : 0;
 
-    const completionPercentage =
-      totalSections === 0 ? 100 : (completedSections / totalSections) * 100;
+    // const completionPercentage =
+    //   totalSections === 0 ? 100 : (completedSections / totalSections) * 100;
 
     // Round to 2 decimal places
-    return Math.round(completionPercentage * 100) / 100;
+    // return Math.round(completionPercentage * 100) / 100;
+    return 100;
   };
 
   return {
